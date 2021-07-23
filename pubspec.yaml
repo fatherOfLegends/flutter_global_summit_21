@@ -1,0 +1,21 @@
+name: flutter_global_summit
+description: A Flutter project for showing the value of page_object and given_when_then
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  given_when_then: ^0.2.0
+  page_object: ^0.2.0
+
+flutter:
+  uses-material-design: true
