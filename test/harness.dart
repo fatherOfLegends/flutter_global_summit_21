@@ -4,11 +4,6 @@ import 'package:flutter_global_summit/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:given_when_then/given_when_then.dart';
 
-const _expect = expect;
-const _findsOneWidget = findsOneWidget;
-const _findsNothing = findsNothing;
-const _findsNWidgets = findsNWidgets;
-
 Future<void> Function(WidgetTester) harness(WidgetTestHarnessCallback<ExampleWidgetTestHarness> callback) {
   return (tester) => givenWhenThenWidgetTest(ExampleWidgetTestHarness(tester), callback);
 }
@@ -49,11 +44,11 @@ extension ExampleWhen on WidgetTestWhen<ExampleWidgetTestHarness> {
 }
 
 extension ExampleThen on WidgetTestThen<ExampleWidgetTestHarness> {
-  void userFindsOne(Finder finder, {String? reason}) => _expect(finder, _findsOneWidget, reason: reason);
+  void userFindsOne(Finder finder, {String? reason}) => expect(finder, findsOneWidget, reason: reason);
 
-  void userCannotFind(Finder finder1) => _expect(finder1, _findsNothing);
+  void userCannotFind(Finder finder1) => expect(finder1, findsNothing);
 
-  void userFindsMany(Finder finder, {required int count}) => _expect(finder, _findsNWidgets(count));
+  void userFindsMany(Finder finder, {required int count}) => expect(finder, findsNWidgets(count));
 
   void userFindsOnePerIndex(Finder Function(int) finderBuilder, {required int count}) {
     for (int i = 0; i < count; i++) {
