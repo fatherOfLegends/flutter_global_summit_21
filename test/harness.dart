@@ -18,7 +18,7 @@ class ExampleWidgetTestHarness extends WidgetTestHarness {
 }
 
 extension ExampleGiven on WidgetTestGiven<ExampleWidgetTestHarness> {
-  Future<void> pumpMyApp() async => tester.pumpWidget(MyApp());
+  Future<void> myAppIsLaunched() async => tester.pumpWidget(MyApp());
 }
 
 extension ExampleWhen on WidgetTestWhen<ExampleWidgetTestHarness> {
@@ -49,15 +49,15 @@ extension ExampleWhen on WidgetTestWhen<ExampleWidgetTestHarness> {
 }
 
 extension ExampleThen on WidgetTestThen<ExampleWidgetTestHarness> {
-  void findsOneWidget(Finder finder, {String? reason}) => _expect(finder, _findsOneWidget, reason: reason);
+  void userFindsOne(Finder finder, {String? reason}) => _expect(finder, _findsOneWidget, reason: reason);
 
-  void findsNothing(Finder finder1) => _expect(finder1, _findsNothing);
+  void userCannotFind(Finder finder1) => _expect(finder1, _findsNothing);
 
-  void findsWidgets(Finder finder, {required int count}) => _expect(finder, _findsNWidgets(count));
+  void userFindsMany(Finder finder, {required int count}) => _expect(finder, _findsNWidgets(count));
 
-  void findsOneWidgetPerIndex(int count, Finder Function(int) finderBuilder) {
+  void userFindsOnePerIndex(Finder Function(int) finderBuilder, {required int count}) {
     for (int i = 0; i < count; i++) {
-      findsOneWidget(finderBuilder(i));
+      userFindsOne(finderBuilder(i));
     }
   }
 }
